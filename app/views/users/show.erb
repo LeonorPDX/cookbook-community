@@ -1,5 +1,5 @@
 <h2>Recipes created by <%= @user.username %></h2>
-<p>View <%= @user.username %>'s Cookbook <a href="/users/<%= @user.slug %>/cookbook">here.</a>
+<p>View <%= @user.username %>'s Cookbook <a href="/<%= @user.slug %>/cookbook">here.</a>
 
 <ul>
 <% @recipes.each do |r| %>

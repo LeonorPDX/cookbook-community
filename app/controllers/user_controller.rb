@@ -47,7 +47,7 @@ class UsersController < ApplicationController
         end
     end
 
-    get '/users/:slug' do
+    get '/:slug' do
         @user = User.find_by_slug(params[:slug])
         @recipes = []
         Recipe.all.each do |r|
@@ -61,16 +61,16 @@ class UsersController < ApplicationController
     post '/add/:id' do
         @recipe = Recipe.find(params[:id])
         current_user.recipes << @recipe
-        redirect "/users/#{current_user.slug}/cookbook"
+        redirect "/#{current_user.slug}/cookbook"
     end
 
     post '/remove/:id' do
         @recipe = current_user.recipes.find(params[:id])
         @recipe.delete
-        redirect "/users/#{current_user.slug}/cookbook"
+        redirect "/#{current_user.slug}/cookbook"
     end
 
-    get '/users/:slug/cookbook' do
+    get '/:slug/cookbook' do
         @user = User.find_by_slug(params[:slug])
         @recipes = @user.recipes
         erb :"users/cookbook"

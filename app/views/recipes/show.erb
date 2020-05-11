@@ -2,7 +2,7 @@
 <%= @recipe.ingredients.gsub(/\n/, '<br/>') %><br><br>
 <%= @recipe.directions.gsub(/\n/, '<br/>') %><br><br>
 Recipe Type: <i><%= @recipe.type_tag %></i><br><br>
-Created by: <a href="/users/<%= @user.slug %>"><%= @user.username %></a><br><br>
+Created by: <a href="/<%= @user.slug %>"><%= @user.username %></a><br><br>
 
 <% if current_user.recipes.include?(@recipe) %>
 <form method="post" action="/remove/<%= @recipe.id %>">
