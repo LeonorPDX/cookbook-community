@@ -1,0 +1,34 @@
+<form action="/recipes/<%= @recipe.id %>" method="post">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+
+    Edit your recipe. <br><br>
+
+    Name:<br>
+    <input type="text" name="name" value="<%= @recipe.name %>" required><br><br>
+    
+    Ingredients:<br>
+    <textarea name="ingredients" rows="15" cols="50"><%= @recipe.ingredients %></textarea><br><br>
+    
+    Directions:<br>
+    <textarea name="directions" rows="15" cols="50"><%= @recipe.directions %></textarea><br><br>
+    
+    Recipe Type:<br>
+    <input type="radio" id="entrees" name="type_tag" value="Entrees" <%='checked' if @recipe.type_tag == "Entrees" %>>
+    <label for="entrees">Entrees</label><br>
+    <input type="radio" id="desserts" name="type_tag" value="Desserts" <%='checked' if @recipe.type_tag == "Desserts" %>>
+    <label for="desserts">Desserts</label><br>
+    <input type="radio" id="breads" name="type_tag" value="Breads" <%='checked' if @recipe.type_tag == "Breads" %>>
+    <label for="breads">Breads</label><br>
+    <input type="radio" id="salads" name="type_tag" value="Salads" <%='checked' if @recipe.type_tag == "Salads" %>>
+    <label for="salads">Salads</label><br>
+    <input type="radio" id="soups" name="type_tag" value="Soups" <%='checked' if @recipe.type_tag == "Soups" %>>
+    <label for="soups">Soups</label><br>
+    <input type="radio" id="snacks" name="type_tag" value="Snacks" <%='checked' if @recipe.type_tag == "Snacks" %>>
+    <label for="snacks">Snacks</label><br>
+    <input type="radio" id="beverages" name="type_tag" value="Beverages" <%='checked' if @recipe.type_tag == "Beverages" %>>
+    <label for="beverages">Beverages</label><br>
+    <input type="radio" id="other" name="type_tag" value="Other" <%='checked' if @recipe.type_tag == "Other" %>>
+    <label for="other">Other</label><br><br>
+    
+    <input type="submit" id="submit" value="Submit Edits">
+</form>

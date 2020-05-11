@@ -5,4 +5,12 @@ class User < ActiveRecord::Base
     has_many :saved_recipes
     has_many :recipes, through: :saved_recipes
 
+    def slug
+        self.username.gsub("_", "-").downcase
+      end
+    
+      def self.find_by_slug(slug)
+        self.all.find{ |user| user.slug == slug }
+      end
+
 end

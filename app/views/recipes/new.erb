@@ -1,0 +1,34 @@
+<form action='/recipes' method="post">
+<h2>Create your recipe</h2>
+
+Name:<br>
+<input type="text" name="name" required><br><br>
+
+Ingredients:<br>
+<textarea name="ingredients" rows="15" cols="50">List ingredients with measurements here...</textarea><br><br>
+
+Directions:<br>
+<textarea name="directions" rows="15" cols="50">Enter the preparation directions here...</textarea><br><br>
+
+Recipe Type:<br>
+<input type="radio" id="entrees" name="type_tag" value="Entrees">
+<label for="entrees">Entrees</label><br>
+<input type="radio" id="desserts" name="type_tag" value="Desserts">
+<label for="desserts">Desserts</label><br>
+<input type="radio" id="breads" name="type_tag" value="Breads">
+<label for="breads">Breads</label><br>
+<input type="radio" id="salads" name="type_tag" value="Salads">
+<label for="salads">Salads</label><br>
+<input type="radio" id="soups" name="type_tag" value="Soups">
+<label for="soups">Soups</label><br>
+<input type="radio" id="snacks" name="type_tag" value="Snacks">
+<label for="snacks">Snacks</label><br>
+<input type="radio" id="beverages" name="type_tag" value="Beverages">
+<label for="beverages">Beverages</label><br>
+<input type="radio" id="other" name="type_tag" value="Other">
+<label for="other">Other</label><br><br>
+
+
+<input type="submit" name="submit" id="submit" value="Create Recipe">
+
+</form>

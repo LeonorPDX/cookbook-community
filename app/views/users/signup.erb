@@ -1,0 +1,9 @@
+<h3>Sign Up</h3>
+<form action="/signup" method="POST">
+  <b> All fields are required.</b> <br><br>
+  <input type="text" name="username" placeholder="Username" required pattern="[0-9a-zA-Z_-]*"><br>
+  <small><i>Please use only A-Z, a-z, 0-9, "_" or "-"</i></small><br><br>
+  <input type="email" name="email" placeholder="Email" required><br><br>
+  <input type="password" name="password" placeholder="Password" required pattern=".{6,}" title="Six or more characters"><br><br>
+  <input type="submit" value="Sign Up">
+</form>
