@@ -7,8 +7,8 @@ Specs:
 - [X] Include at least one has_many relationship on your User model (e.g. User has_many Posts) -- User has many recipes they created as well as many recipes through saved recipes. Recipes belong to one user and also have many users through saved recipes.
 - [X] Include at least one belongs_to relationship on another model (e.g. Post belongs_to User) -- Recipe belongs to user, saved recipes belongs to user and to recipe.
 - [X] Include user accounts with unique login attribute (username or email) -- User sign-up form requires input, User model validates presence and uniqueness, custom error (flash message) shows up if user sign up cannot be persisted to the database.
-- [ ] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
-- [ ] Ensure that users can't modify content created by other users
+- [X] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying -- Recipe has full CRUD, highlighted in recipe controller with commented-out text
+- [X] Ensure that users can't modify content created by other users -- views use "if" statement to show edit and delete buttons only to the user that the recipe belongs to. Also the recipe controller only renders the edit page if the user's id matches the recipe id they try to edit, otherwise it redirects to the recipe's show page.
 - [ ] Include user input validations
 - [ ] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new)
 - [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
