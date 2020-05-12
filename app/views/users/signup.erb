@@ -1,5 +1,8 @@
 <h3>Sign Up</h3>
 <form action="/signup" method="POST">
+  <% if flash.has?(:message) %>
+      <%= flash[:message] %><br><br>
+  <% end %>
   <b> All fields are required.</b> <br><br>
   <input type="text" name="username" placeholder="Username" required pattern="[0-9a-zA-Z_-]*"><br>
   <small><i>Please use only A-Z, a-z, 0-9, "_" or "-"</i></small><br><br>
