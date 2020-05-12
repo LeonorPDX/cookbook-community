@@ -39,12 +39,9 @@ class UsersController < ApplicationController
     end
     
     get '/logout' do
-        if logged_in?
-            session.destroy
-            redirect "/login"
-        else
-            redirect "/"
-        end
+        require_login
+        session.destroy
+        redirect "/"
     end
 
     get '/:slug' do

@@ -23,7 +23,13 @@ helpers do
 
 	def current_user
 		User.find(session[:user_id])
-	end
+  end
+  
+  def require_login
+    unless logged_in?
+      redirect "/login"
+    end
+  end
 end
 
 end

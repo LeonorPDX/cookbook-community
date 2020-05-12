@@ -1,20 +1,14 @@
 class RecipesController < ApplicationController
     
     get '/recipes' do
-        if logged_in?
-            @recipes = Recipe.all
-            erb :"recipes/index"
-        else
-          redirect "/"
-        end
+        require_login
+        @recipes = Recipe.all
+        erb :"recipes/index"
     end
             
     get '/recipes/new' do
-        if logged_in?
-            erb :"recipes/new"
-        else
-            redirect "/login"
-        end
+        require_login
+        erb :"recipes/new"
     end
 
     post '/recipes' do
@@ -31,42 +25,40 @@ class RecipesController < ApplicationController
     end
 
     get '/recipes/:id' do
-        if logged_in?
-            @recipe = Recipe.find_by(id: params[:id])
-            if @recipe
-                @user = User.find(@recipe.user_id)
-                erb :"recipes/show"
-            else
-                redirect "/recipes"
-            end
+        require_login
+        @recipe = Recipe.find_by(id: params[:id])
+        if @recipe
+            @user = User.find(@recipe.user_id)
+            erb :"recipes/show"
         else
-            redirect "/login"
+            redirect "/recipes"
         end
     end
 
     delete '/recipes/:id' do
         @recipe = Recipe.find(params[:id])
 
-        if logged_in? && @recipe.user_id == current_user.id
+        if @recipe.user_id == current_user.id
             @recipe.delete
             redirect "/recipes"
         end
     end
 
     get '/recipes/:id/edit' do
-        if logged_in?
-            @recipe = Recipe.find(params[:id])
-            @user = User.find(@recipe.user_id)
+        require_login
+        @recipe = Recipe.find(params[:id])
+        @user = User.find(@recipe.user_id)
+        if @recipe.user_id == current_user.id
             erb :"recipes/edit"
         else
-            redirect "/login"
+            redirect "/recipes/#{@recipe.id}"
         end
     end
 
     patch '/recipes/:id' do
         @recipe = Recipe.find(params[:id])
 
-        if logged_in? && @recipe.user_id == current_user.id
+        if @recipe.user_id == current_user.id
             @recipe.name = params[:name]
             @recipe.ingredients = params[:ingredients]
             @recipe.directions = params[:directions]
