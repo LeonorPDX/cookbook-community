@@ -39,7 +39,6 @@ class UsersController < ApplicationController
     end
     
     get '/logout' do
-        require_login
         session.destroy
         redirect "/"
     end
