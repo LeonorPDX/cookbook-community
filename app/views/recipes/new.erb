@@ -1,6 +1,10 @@
 <form action='/recipes' method="post">
 <h2>Create your recipe</h2>
 
+<% if flash.has?(:message) %>
+    <%= flash[:message] %><br><br>
+<% end %>
+
 Name:<br>
 <input type="text" name="name" required><br><br>
 

@@ -25,15 +25,20 @@ class RecipesController < ApplicationController
             current_user.recipes << @recipe
             redirect "/recipes/#{@recipe.id}"
         else
+            flash[:message] = "All fields are required. Please input name, ingredients, directions and select a type."
             redirect "/recipes/new"
         end
     end
 
     get '/recipes/:id' do
         if logged_in?
-            @recipe = Recipe.find(params[:id])
-            @user = User.find(@recipe.user_id)
-            erb :"recipes/show"
+            @recipe = Recipe.find_by(id: params[:id])
+            if @recipe
+                @user = User.find(@recipe.user_id)
+                erb :"recipes/show"
+            else
+                redirect "/recipes"
+            end
         else
             redirect "/login"
         end
@@ -61,15 +66,18 @@ class RecipesController < ApplicationController
     patch '/recipes/:id' do
         @recipe = Recipe.find(params[:id])
 
-        if logged_in? && @recipe.user_id == current_user.id && params[:name] != ""
+        if logged_in? && @recipe.user_id == current_user.id
             @recipe.name = params[:name]
             @recipe.ingredients = params[:ingredients]
             @recipe.directions = params[:directions]
             @recipe.type_tag = params[:type_tag]
-            @recipe.save
-            redirect "/recipes/#{@recipe.id}"
-        else
-            redirect "/recipes/#{@recipe.id}/edit"
+
+            if @recipe.save
+                redirect "/recipes/#{@recipe.id}"
+            else
+                flash[:message] = "All fields are required. Please input name, ingredients and directions."
+                redirect "/recipes/#{@recipe.id}/edit"
+            end
         end
     end
 end

@@ -1,30 +1,12 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
   <head>
     <title>CookbookCommunity</title>
-
-    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link rel="shortcut icon" href="public/cc-favicon.ico" type="image/x-icon" />
   </head>
   <body>
 
-    <div class="wrapper">
-    <header><img src="../images/cc-med.png"></header>
-    <br>
-        <%= yield %>
+    <%= yield %>
 
-      <footer class="branding">
-      <img src="../images/cc-small.png">  
-      <small>&copy; 2020 <strong>CookbookCommunity</strong></small>
-      </footer>
-    </div>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <!--[if lt IE 7]>
-      <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
-      <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
-    <![endif]-->
   </body>
 </html>
