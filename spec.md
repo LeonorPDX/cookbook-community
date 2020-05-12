@@ -2,11 +2,11 @@
 
 Specs:
 - [x] Use Sinatra to build the app
-- [ ] Use ActiveRecord for storing information in a database
-- [ ] Include more than one model class (e.g. User, Post, Category)
-- [ ] Include at least one has_many relationship on your User model (e.g. User has_many Posts)
-- [ ] Include at least one belongs_to relationship on another model (e.g. Post belongs_to User)
-- [ ] Include user accounts with unique login attribute (username or email)
+- [X] Use ActiveRecord for storing information in a database -- set up ActiveRecord base in config/environment, all models inheret from ActiveRecord::Base
+- [X] Include more than one model class (e.g. User, Post, Category) -- app has User, Recipe, and SavedRecipe models
+- [X] Include at least one has_many relationship on your User model (e.g. User has_many Posts) -- User has many recipes they created as well as many recipes through saved recipes. Recipes belong to one user and also have many users through saved recipes.
+- [X] Include at least one belongs_to relationship on another model (e.g. Post belongs_to User) -- Recipe belongs to user, saved recipes belongs to user and to recipe.
+- [X] Include user accounts with unique login attribute (username or email) -- User sign-up form requires input, User model validates presence and uniqueness, custom error (flash message) shows up if user sign up cannot be persisted to the database.
 - [ ] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
 - [ ] Ensure that users can't modify content created by other users
 - [ ] Include user input validations
