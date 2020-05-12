@@ -14,7 +14,7 @@ Specs:
 - [X] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code -- Looked at other students' README from previous cohorts and formatted mine to include similar information.
 
 Confirm
-- [ ] You have a large number of small Git commits
-- [ ] Your commit messages are meaningful
-- [ ] You made the changes in a commit that relate to the commit message
-- [ ] You don't include changes in a commit that aren't related to the commit message
+- [X] You have a large number of small Git commits -- had one day of working where I forgot to commit for most of the day, unfortunately. Tried to commit as often as possible as soon as I realized my error.
+- [X] Your commit messages are meaningful -- Yes
+- [X] You made the changes in a commit that relate to the commit message -- Yesy
+- [X] You don't include changes in a commit that aren't related to the commit message -- Yes
