@@ -9,7 +9,7 @@ Specs:
 - [X] Include user accounts with unique login attribute (username or email) -- User sign-up form requires input, User model validates presence and uniqueness, custom error (flash message) shows up if user sign up cannot be persisted to the database.
 - [X] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying -- Recipe has full CRUD, highlighted in recipe controller with commented-out text
 - [X] Ensure that users can't modify content created by other users -- views use "if" statement to show edit and delete buttons only to the user that the recipe belongs to. Also the recipe controller only renders the edit page if the user's id matches the recipe id they try to edit, otherwise it redirects to the recipe's show page.
-- [ ] Include user input validations
+- [X] Include user input validations -- Models validate the presence of content, error (flash message) is shown if the record cannot be persisted to the database.
 - [ ] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new)
 - [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
