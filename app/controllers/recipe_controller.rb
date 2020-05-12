@@ -1,12 +1,25 @@
   
 class RecipesController < ApplicationController
     
+    ## CRUD-Read, show all and show all by type tag
     get '/recipes' do
         require_login
         @recipes = Recipe.all
         erb :"recipes/index"
     end
-            
+
+    get '/recipes/type/:tag' do
+        require_login
+        @recipes = []
+        Recipe.all.each do |r|
+            if r.type_tag == params[:tag]
+                @recipes << r
+            end
+        end
+        erb :"recipes/index"
+    end
+    
+    ##CRUD-Create, renders a form and posts form to create new recipe
     get '/recipes/new' do
         require_login
         erb :"recipes/new"
@@ -25,6 +38,7 @@ class RecipesController < ApplicationController
         end
     end
 
+    ##CRUD-Read, show a single recipe
     get '/recipes/:id' do
         require_login
         @recipe = Recipe.find_by(id: params[:id])
@@ -36,6 +50,7 @@ class RecipesController < ApplicationController
         end
     end
 
+    ##CRUD-Delete, form with delete button uses the hidden delete action
     delete '/recipes/:id' do
         @recipe = Recipe.find(params[:id])
 
@@ -45,6 +60,7 @@ class RecipesController < ApplicationController
         end
     end
 
+    ##CRUD-Update, renders form and uses hidden patch action to update recipe
     get '/recipes/:id/edit' do
         require_login
         @recipe = Recipe.find(params[:id])
