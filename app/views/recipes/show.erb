@@ -1,4 +1,4 @@
-<h3><%= @recipe.name %></h3><br>
+<h2><%= @recipe.name %></h2><br>
 <%= @recipe.ingredients.gsub(/\n/, '<br/>') %><br><br>
 <%= @recipe.directions.gsub(/\n/, '<br/>') %><br><br>
 Recipe Type: <i><%= @recipe.type_tag %></i><br><br>

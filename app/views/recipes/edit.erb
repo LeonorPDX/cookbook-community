@@ -1,8 +1,7 @@
+<h2>Edit your recipe</h2>
 
 <form action="/recipes/<%= @recipe.id %>" method="post">
     <input id="hidden" type="hidden" name="_method" value="patch">
-
-    <h2>Edit your recipe</h2>
 
     <% if flash.has?(:message) %>
         <%= flash[:message] %><br><br>
