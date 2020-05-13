@@ -12,9 +12,10 @@ class RecipesController < ApplicationController
     end
 
     get '/recipes/type/:tag' do
-        @recipes = Recipe.all.collect do |r|
+        @recipes = []
+        Recipe.all.each do |r|	
             if r.type_tag == params[:tag]
-                r
+                @recipes << r
             end
         end
         erb :"recipes/index"

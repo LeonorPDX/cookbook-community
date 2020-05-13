@@ -34,8 +34,9 @@ class UsersController < ApplicationController
 		if user && user.authenticate(params[:password])
 		  session[:user_id] = user.id
 		  redirect "/recipes"
-		else
-		  redirect "/"
+        else
+            flash[:message] = "Unable to log in, please try again or click \"Sign Up\" below if you need to create an account."
+	        redirect "/login"
 		end
     end
     
