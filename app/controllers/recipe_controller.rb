@@ -13,10 +13,9 @@ class RecipesController < ApplicationController
 
     get '/recipes/type/:tag' do
         require_login
-        @recipes = []
-        Recipe.all.each do |r|
+        @recipes = Recipe.all.collect do |r|
             if r.type_tag == params[:tag]
-                 r
+                r
             end
         end
         erb :"recipes/index"
