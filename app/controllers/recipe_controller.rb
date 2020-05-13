@@ -1,9 +1,12 @@
   
 class RecipesController < ApplicationController
     
+    before do
+        require_login
+    end
+
     ## CRUD-Read, show all and show all by type tag
     get '/recipes' do
-        require_login
         @recipes = Recipe.all
         erb :"recipes/index"
     end
@@ -13,7 +16,7 @@ class RecipesController < ApplicationController
         @recipes = []
         Recipe.all.each do |r|
             if r.type_tag == params[:tag]
-                @recipes << r
+                 r
             end
         end
         erb :"recipes/index"
