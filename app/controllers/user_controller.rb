@@ -15,7 +15,8 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             redirect "/recipes"
         else
-            flash[:message] = "We were not able to create an account. The username may be in use, or you may already have an account with this email."
+            user.errors.full_messages.each {|m| flash[:message] = m}
+            #flash[:message] = "We were not able to create an account. The username may be in use, or you may already have an account with this email."
             redirect "/signup"
         end
     end
