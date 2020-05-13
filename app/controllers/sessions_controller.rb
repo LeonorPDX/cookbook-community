@@ -1,15 +1,15 @@
-class UsersController < ApplicationController
+class SessionsController < ApplicationController
     
     get '/signup' do
         if !logged_in?
-            erb :"users/signup"
+            erb :"sessions/signup"
         else
           redirect "/recipes"
         end
     end
     
     post '/signup' do
-        user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
+        user = User.new(params)
         
         if user.save
             session[:user_id] = user.id
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
     get '/login' do
         if !logged_in?
-            erb :"users/login"
+            erb :"sessions/login"
         else
           redirect "/recipes"
         end
@@ -45,14 +45,4 @@ class UsersController < ApplicationController
         redirect "/"
     end
 
-    get '/:slug' do
-        @user = User.find_by_slug(params[:slug])
-        @recipes = []
-        Recipe.all.each do |r|
-            if r.user_id == @user.id
-                @recipes << r 
-            end
-        end
-        erb :"users/show"
-    end
 end
