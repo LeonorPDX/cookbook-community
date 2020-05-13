@@ -27,7 +27,7 @@ class RecipesController < ApplicationController
     end
 
     post '/recipes' do
-        @recipe = Recipe.new(:name => params["name"], :ingredients => params["ingredients"], :directions => params["directions"], :type_tag => params["type_tag"])
+        @recipe = Recipe.new(params)
         @recipe.user_id = current_user.id
         
         if @recipe.save
