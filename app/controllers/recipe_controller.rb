@@ -12,7 +12,6 @@ class RecipesController < ApplicationController
     end
 
     get '/recipes/type/:tag' do
-        require_login
         @recipes = Recipe.all.collect do |r|
             if r.type_tag == params[:tag]
                 r
@@ -23,7 +22,6 @@ class RecipesController < ApplicationController
     
     ##CRUD-Create, renders a form and posts form to create new recipe
     get '/recipes/new' do
-        require_login
         erb :"recipes/new"
     end
 
@@ -42,7 +40,6 @@ class RecipesController < ApplicationController
 
     ##CRUD-Read, show a single recipe
     get '/recipes/:id' do
-        require_login
         @recipe = Recipe.find_by(id: params[:id]) ## If user types in recipe id in browser that does not exist in the database, redirects to /recipes. Uses find_by because with find it showed an active record error page instead of redirecting.
         if @recipe
             @user = User.find(@recipe.user_id)
@@ -64,7 +61,6 @@ class RecipesController < ApplicationController
 
     ##CRUD-Update, renders form and uses hidden patch action to update recipe
     get '/recipes/:id/edit' do
-        require_login
         @recipe = Recipe.find(params[:id])
         @user = User.find(@recipe.user_id)
         if @recipe.user_id == current_user.id
