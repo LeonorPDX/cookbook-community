@@ -44,7 +44,7 @@ class RecipesController < ApplicationController
     ##CRUD-Read, show a single recipe
     get '/recipes/:id' do
         require_login
-        @recipe = Recipe.find_by(id: params[:id])
+        @recipe = Recipe.find_by(id: params[:id]) ## If user types in recipe id in browser that does not exist in the database, redirects to /recipes. Uses find_by because with find it showed an active record error page instead of redirecting.
         if @recipe
             @user = User.find(@recipe.user_id)
             erb :"recipes/show"
