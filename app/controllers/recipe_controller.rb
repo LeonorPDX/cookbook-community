@@ -8,16 +8,12 @@ class RecipesController < ApplicationController
     ## CRUD-Read, show all and show all by type tag
     get '/recipes' do
         @recipes = Recipe.all
+        @recipes = @recipes.sort_by{|r| r.name}
         erb :"recipes/index"
     end
 
     get '/recipes/type/:tag' do
-        @recipes = []
-        Recipe.all.each do |r|	
-            if r.type_tag == params[:tag]
-                @recipes << r
-            end
-        end
+        @recipes = Recipe.all.select {|r| r.type_tag == params[:tag] }
         erb :"recipes/index"
     end
     
