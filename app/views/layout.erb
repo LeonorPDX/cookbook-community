@@ -5,7 +5,25 @@
   </head>
   <body>
     <div class="wrapper">
-      <header><img src="/images/cc-med.png"><br><br></header>
+      <header><img src="/images/cc-med.png">
+      <nav>
+        <ul>
+        <% if logged_in? %>
+          <li><a href="/recipes">All Recipes</a></li>
+          <li><a href="/<%= current_user.slug %>/cookbook">Your Cookbook</a></li>
+          <li><a href="/recipes/new">Create Recipe</a></li>
+          <li><a href="/logout">Log Out</a></li>
+          <li><a href="/">About</a></li>
+        <% else %>
+          <li><a href="/signup">Sign Up</a></li>
+          <li><a href="/login">Log In</a></li>
+          <li><a href="https://leonorpdx.github.io/">Blog</a></li>
+          <li><a href="https://leonorpdx.github.io/">Video</a></li>
+          <li><a href="https://leonorpdx.github.io/">GitHub</a></li>
+        <% end %>
+        </ul>
+      </nav>
+      </header>
 
         <%= yield %>
 
