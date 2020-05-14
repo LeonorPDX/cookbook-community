@@ -6,12 +6,7 @@ class UsersController < ApplicationController
     
     get '/:slug' do
         @user = User.find_by_slug(params[:slug])
-        @recipes = []
-        Recipe.all.each do |r|
-            if r.user_id == @user.id
-                @recipes << r 
-            end
-        end
+        @recipes = Recipe.all.select { |r| r.user_id == @user.id }
         erb :"users/show"
     end
 
