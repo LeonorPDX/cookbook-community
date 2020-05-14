@@ -1,14 +1,16 @@
 <h2>Welcome, <%= current_user.username %></h2>
 
-<a href="/<%= current_user.slug %>/cookbook">View your Cookbook</a><br>
-<a href="/recipes/new">Create a Recipe</a><br>
-<a href="/logout">Log Out</a><br><br>
-
-<h3>Recipes</h3>
-
-<p>Browse recipes by type: <a href="/recipes/type/Entrees">Entrees</a> | <a href="/recipes/type/Desserts">Desserts</a> | <a href="/recipes/type/Breads">Breads</a> | 
-<a href="/recipes/type/Salads">Salads</a> | <a href="/recipes/type/Soups">Soups</a> | <a href="/recipes/type/Snacks">Snacks</a> | <a href="/recipes/type/Beverages">Beverages</a> | 
-<a href="/recipes/type/Other">Other</a> | <a href="/recipes">All Recipes</a> 
+<h3>Browse recipes by type:</h3>
+<a href="/recipes/type/Entrees">Entrees</a>  |  
+<a href="/recipes/type/Desserts">Desserts</a>  |  
+<a href="/recipes/type/Breads">Breads</a>  |  
+<a href="/recipes/type/Salads">Salads</a>  |  
+<a href="/recipes/type/Soups">Soups</a>  |  
+<a href="/recipes/type/Snacks">Snacks</a>  |  
+<a href="/recipes/type/Beverages">Beverages</a>  |  
+<a href="/recipes/type/Other">Other</a>  |  
+<a href="/recipes">All Recipes</a> 
+<br><br>
 
 <ul>
 <% @recipes.each do |r| %>

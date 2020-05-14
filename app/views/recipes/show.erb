@@ -13,7 +13,6 @@ Created by: <a href="/<%= @user.slug %>"><%= @user.username %></a><br><br>
 </form>
  <br><br>
 
-<a href="/recipes"><button type="button">Return to All Recipes</button></a><br><br>
 <% if @recipe.user_id == current_user.id %>
 <a href="/recipes/<%= @recipe.id %>/edit"><button type="button">Edit Recipe</button></a><br><br>
 <form method="post" action="/recipes/<%= @recipe.id %>">
