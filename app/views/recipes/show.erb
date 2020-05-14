@@ -4,13 +4,12 @@
 Recipe Type: <i><%= @recipe.type_tag %></i><br><br>
 Created by: <a href="/<%= @user.slug %>"><%= @user.username %></a><br><br>
 
+
+<form method="post" action="/cookbook/<%= @recipe.id %>">
 <% if current_user.recipes.include?(@recipe) %>
-<form method="post" action="/remove/<%= @recipe.id %>">
-  <input type="submit" value="Remove from my Cookbook">
-</form>
+  <input type="submit" name="do_this" value="Remove from my Cookbook">
 <% else %>
-<form method="post" action="/add/<%= @recipe.id %>">
-  <input type="submit" value="Add to my Cookbook">
+  <input type="submit" name="do_this" value="Add to my Cookbook">
 </form>
 <% end %><br><br>
 
