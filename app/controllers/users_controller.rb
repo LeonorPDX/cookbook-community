@@ -25,12 +25,7 @@ class UsersController < ApplicationController
         if params[:do_this] == "Add to my Cookbook"
             @recipe = Recipe.find(params[:id])
             current_user.recipes << @recipe
-        end
-        redirect "/#{current_user.slug}/cookbook"
-    end
-
-    delete '/cookbook/:id' do
-        if params[:do_this] == "Remove from my Cookbook"
+        elsif params[:do_this] == "Remove from my Cookbook"
             @saved_recipe = SavedRecipe.find_by(recipe_id: params[:id], user_id: current_user.id)
             @saved_recipe.delete
         end
