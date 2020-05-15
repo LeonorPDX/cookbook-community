@@ -107,6 +107,17 @@
       padding-top: 20px;
     }
 
+    .row {
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    .column {
+      flex: 50%;
+      text-align: center;
+    }
+
     .center {
       text-align: center;
     }
