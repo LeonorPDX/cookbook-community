@@ -14,6 +14,7 @@ class RecipesController < ApplicationController
 
     get '/recipes/type/:tag' do
         @recipes = Recipe.all.select {|r| r.type_tag == params[:tag] }
+        @recipes = @recipes.sort_by{|r| r.name}
         erb :"recipes/index"
     end
     

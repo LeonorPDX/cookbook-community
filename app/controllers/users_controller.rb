@@ -7,12 +7,14 @@ class UsersController < ApplicationController
     get '/:slug' do
         @user = User.find_by_slug(params[:slug])
         @recipes = Recipe.all.select { |r| r.user_id == @user.id }
+        @recipes = @recipes.sort_by{|r| r.name}
         erb :"users/show"
     end
 
     get '/:slug/cookbook' do
         @user = User.find_by_slug(params[:slug])
         @recipes = @user.recipes
+        @recipes = @recipes.sort_by{|r| r.name}
         erb :"users/cookbook"
     end
 
