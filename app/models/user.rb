@@ -14,8 +14,4 @@ class User < ActiveRecord::Base
         self.all.find{ |user| user.slug == slug }
     end
 
-    def valid_username?
-      nil if self.class.find_by_slug(self.username)
-    end
-
 end
