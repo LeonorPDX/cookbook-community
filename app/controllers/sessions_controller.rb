@@ -11,11 +11,14 @@ class SessionsController < ApplicationController
     post '/signup' do
         user = User.new(params)
         
-        if user.save
+        if user.valid_username? && user.save
             session[:user_id] = user.id
             redirect "/recipes"
         else
             user.errors.full_messages.each {|m| flash[:message] = m}
+            unless user.valid_username? 
+                flash[:message] = "Username is already in use."
+            end
             redirect "/signup"
         end
     end
