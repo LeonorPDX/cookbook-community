@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     end
     
     get '/:slug' do
-        @user = User.find_by_slug(params[:slug])
+        @user = User.find_by(username: params[:slug])
         @recipes = Recipe.all.select { |r| r.user_id == @user.id }
         @recipes = @recipes.sort_by{|r| r.name}
         erb :"users/show"
