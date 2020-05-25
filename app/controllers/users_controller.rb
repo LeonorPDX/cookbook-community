@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     end
 
     get '/:slug/cookbook' do
-        @user = User.find_by_slug(params[:slug])
+        @user = User.find_by(username: params[:slug])
         @recipes = @user.recipes
         @recipes = @recipes.sort_by{|r| r.name}
         erb :"users/cookbook"
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
             @saved_recipe = SavedRecipe.find_by(recipe_id: params[:id], user_id: current_user.id)
             @saved_recipe.delete
         end
-        redirect "/#{current_user.slug}/cookbook"
+        redirect "/#{current_user.username}/cookbook"
     end
 
 end
